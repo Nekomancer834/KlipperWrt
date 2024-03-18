@@ -18,10 +18,8 @@ format(){
 		* ) echo "Please answer yes or no.";;
 	    esac
 	done
-	while true; do
-	    read -p "enter device to use: " dev
-	    
-	done
+	
+	read -p "enter device to use: " dev
 	
 	umount $dev;
 
