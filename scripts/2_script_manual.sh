@@ -21,7 +21,7 @@ df -h;
 
 echo " "
 echo "   ############################################"
-echo "   ## Is /dev/mmcblk0p1 mounted on /overlay? ##"
+echo "   ## Is /dev/sda1 mounted on /overlay? ##"
 echo "   ############################################"
 echo " "
 read -p "Press [ENTER] if YES... or [ctrl+c] to exit"
