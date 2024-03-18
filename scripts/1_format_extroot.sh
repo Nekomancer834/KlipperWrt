@@ -18,10 +18,14 @@ format(){
 		* ) echo "Please answer yes or no.";;
 	    esac
 	done
+	while true; do
+	    read -p "enter device to use: " dev
+	    
+	done
 	
-	umount /dev/sda1;
+	umount $dev;
 
-	yes | mkfs.ext4 /dev/sda1;
+	yes | mkfs.ext4 $dev;
 
 }
 
@@ -41,7 +45,7 @@ extroot(){
 	echo -ne 'Making extroot...     [===========>                      ](37%)\r'
 	uci commit fstab;
 	echo -ne 'Making extroot...     [=============>                    ](43%)\r'
-	DEVICE="/dev/sda1";
+	DEVICE="$dev";
 	echo -ne 'Making extroot...     [===============>                  ](50%)\r'
 	eval $(block info "${DEVICE}" | grep -o -e "UUID=\S*");
 	echo -ne 'Making extroot...     [=================>                ](56%)\r'
@@ -55,7 +59,7 @@ extroot(){
 	echo -ne 'Making extroot...     [=========================>        ](81%)\r'
 	uci commit fstab;
 	echo -ne 'Making extroot...     [===========================>      ](87%)\r'
-	mount /dev/sda1 /mnt;
+	mount $dev /mnt;
 	echo -ne 'Making extroot...     [=============================>    ](93%)\r'
 	cp -f -a /overlay/. /mnt;
 	echo -ne 'Making extroot...     [===============================>  ](98%)\r'
