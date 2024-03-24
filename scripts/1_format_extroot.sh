@@ -19,7 +19,12 @@ format(){
 	    esac
 	done
 	
-	read -p "enter device to use: " dev
+	while true; do
+		read -p "enter device to use: " dev
+		if test -d $dev; then
+			break;
+		fi
+	done
 	
 	umount $dev;
 
