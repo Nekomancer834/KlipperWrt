@@ -1,29 +1,41 @@
 #!/bin/sh
 
 echo " "
-echo "This script will format your sd card and make it extroot"
+echo "This script will format your storage device and make it extroot"
 echo " "
-echo "   ###################################################"
-echo "   ## Make sure you've got a microSD card plugged!  ##"
-echo "   ###################################################"
+echo "   ########################################################"
+echo "   ## Make sure you've got a storage device plugged in!  ##"
+echo "   ########################################################"
 echo " "
 read -p "Press [ENTER] to continue...or [ctrl+c] to exit"
 
 format(){
 	while true; do
-	    read -p "This script will format your sdcard. Are you sure about this? [y/n]: " yn
+	    read -p "This script will format your storage device. Are you sure about this? [y/n]: " yn
 	    case $yn in
 		[Yy]* ) break;;
 		[Nn]* ) exit;;
 		* ) echo "Please answer yes or no.";;
 	    esac
 	done
-	
-	read -p "enter device to use: " dev
-	
-	umount $dev;
-
-	yes | mkfs.ext4 $dev;
+	done
+        ls /dev/
+        while true; do
+                read -p "enter device to use (exclude /dev/): " dev
+                if test -f /dev/$dev; then
+                        break;
+                fi
+                read -p "are you sure you want to use $dev?: "
+                case $yn in
+                        [Yy]* ) break;;
+                        [Nn]* ) exit;;
+                        * ) echo "Please answer yes or no.";;
+                esac
+        done
+	echo "unmount /dev/$sda"
+	umount /dev/$dev || /bin/true;
+	echo "making ext4 filesystem"
+	mkfs.ext4 /dev/$dev;
 
 }
 
@@ -43,7 +55,7 @@ extroot(){
 	echo -ne 'Making extroot...     [===========>                      ](37%)\r'
 	uci commit fstab;
 	echo -ne 'Making extroot...     [=============>                    ](43%)\r'
-	DEVICE="$dev";
+	DEVICE="/dev/$dev";
 	echo -ne 'Making extroot...     [===============>                  ](50%)\r'
 	eval $(block info "${DEVICE}" | grep -o -e "UUID=\S*");
 	echo -ne 'Making extroot...     [=================>                ](56%)\r'
@@ -57,7 +69,7 @@ extroot(){
 	echo -ne 'Making extroot...     [=========================>        ](81%)\r'
 	uci commit fstab;
 	echo -ne 'Making extroot...     [===========================>      ](87%)\r'
-	mount $dev /mnt;
+	mount /dev/$dev /mnt;
 	echo -ne 'Making extroot...     [=============================>    ](93%)\r'
 	cp -f -a /overlay/. /mnt;
 	echo -ne 'Making extroot...     [===============================>  ](98%)\r'

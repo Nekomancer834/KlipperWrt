@@ -21,7 +21,7 @@ df -h;
 
 echo " "
 echo "   ############################################"
-echo "   ## Is /dev/sda1 mounted on /overlay? ##"
+echo "   ## Is flashdrive mounted on /overlay? ##"
 echo "   ############################################"
 echo " "
 read -p "Press [ENTER] if YES... or [ctrl+c] to exit"
@@ -40,7 +40,7 @@ echo "   #################"
 echo " "
 
 echo "Creating swap file"
-dd if=/dev/zero of=/overlay/swap.page bs=1M count=512;
+dd if=/dev/zero of=/overlay/swap.page bs=1M count=512 status=progress;
 echo "Enabling swap file"
 mkswap /overlay/swap.page;
 swapon /overlay/swap.page;
