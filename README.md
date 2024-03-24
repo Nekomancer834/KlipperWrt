@@ -28,6 +28,18 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
 - Connect back to your router and either find the new box's ip inside the `DHCP` list.
 - ❗  Access the terminal tab (`Services` -> `Terminal`) ❗ If terminal tab is not working go to `Config` tab and change `Interface` to the interface you are connecting through the box (your wireless router SSID for example) -> `Save & Apply`.
 - Download and execute the `0_change_luci_port.sh` script. This script changes Luci to listen on port 81 to avoid a conflict with mainsail / fluidd. this means after running this script you need to append `:81` to your box's ip address to reach luci.
+<details>
+  <summary>optional script 0 alternative</summary>
+-Instead of running script 0, you can enter the terminal and run:
+
+> 
+  opkg install luci-app-uhttpd
+  reboot
+
+Then after the reboot under `services` -> `uhttpds` change the http listeners to a port of your choice and make sure to remove the two listeners for port 80.
+
+</details>
+
 >
     cd ~
     wget https://raw.githubusercontent.com/Nekomancer834/KlipperWrt/main/scripts/0_change_luci_port.sh

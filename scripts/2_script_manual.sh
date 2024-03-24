@@ -164,8 +164,7 @@ choose(){
 		  echo "   **     Downloading...    **"
 		  echo "   ***************************"
 		  echo " "
-		  mkdir /root/fluidd;
-		  wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip;
+ls		  wget -q -O /root/fluidd/fluidd.zip https://github.com/cadriel/fluidd/releases/latest/download/fluidd.zip && unzip /root/fluidd/fluidd.zip -d /root/fluidd/ && rm /root/fluidd/fluidd.zip;
 		  wget -O /root/printer_data/config/moonraker.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.2/moonraker/fluidd_moonraker.conf;
 		  wget -O /etc/nginx/conf.d/fluidd.conf https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.2/nginx/fluidd.conf;
 			wget https://raw.githubusercontent.com/shivajiva101/KlipperWrt/v3.2/klipper_config/fluidd.cfg -P /root/printer_data/config/
