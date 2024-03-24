@@ -1,7 +1,7 @@
 # KlipperWrt
  ---------------------------------------------------------------------------------
  
- A guide to get _**Klipper**_ with _**fluidd**,_ _**Mainsail**_ or _**Duet-Web-Control**_ on OpenWrt embeded devices like the _Creality Wi-Fi Box_ with a few changes to help installation on devices that don't ahve an sd card that shows up in /dev/mmcblk0p1 (flash drives). I also removed the manual steps in this readme because if you're usign them you don't need this repo.
+ A guide to get _**Klipper**_ with _**fluidd**,_ _**Mainsail**_ or _**Duet-Web-Control**_ on OpenWrt embeded devices like the _Creality Wi-Fi Box_ with a few changes to help installation on devices that don't ahve an sd card that shows up in /dev/mmcblk0p1 (flash drives). I also removed the manual steps in this readme because if you're using them you really won't need this repo.
  All credits go to those listed in the original repo.
  ---------------------------------------------------------------------------------
 # Automatic Steps:
