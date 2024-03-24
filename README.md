@@ -18,7 +18,7 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
 
 #### STEPS:
  
-- Make sure you've flahsed/sysupgraded latest `.bin` file from `/Firmware/OpenWrt_snapshot/` or from latest release.
+- Make sure you've flashed/sysupgraded latest `.bin` file from `/Firmware/OpenWrt_snapshot/` or from latest release.
 - Connect to the `OpenWrt` access point
 - Access LuCi web interface and log in on `192.168.1.1:81`
 - _(**optional** but recommended)_ Add a password to the `OpenWrt` access point: `Wireless` -> Under wireless overview `EDIT` the `OpenWrt` interface -> `Wireless Security` -> Choose an encryption -> set a password -> `Save` -> `Save & Apply`
@@ -27,8 +27,14 @@ This method uses 2 scripts to foramt an sd card and make it extroot and another 
 - Connect as a client to your Internet router: `Network` -> `Wireless` -> `SCAN` -> `Join Network` -> check `Lock to BSSID` -> `Create/Assign Firewall zone` then under `custom` type `wwan` enter -> `Submit` -> `Save` -> `Save & Apply`
 - Connect back to your router and either find the new box's ip inside the `DHCP` list.
 - ❗  Access the terminal tab (`Services` -> `Terminal`) ❗ If terminal tab is not working go to `Config` tab and change `Interface` to the interface you are connecting through the box (your wireless router SSID for example) -> `Save & Apply`.
-- Download and execute the `1_format_extroot.sh` script:
+- Download and execute the `0_change_luci_port.sh` script. This script changes Luci to listen on port 81 to avoid a conflict with mainsail / fluidd. this means after running this script you need to append `:81` to your box's ip address to reach luci.
+>
+    cd ~
+    wget https://raw.githubusercontent.com/Nekomancer834/KlipperWrt/main/scripts/0_change_luci_port.sh
+    chmod +x 0_change_luci_port.sh
+    ./0_change_luci_port.sh
 
+- Download and execute the `1_format_extroot.sh` script:
 >
     cd ~
     wget https://github.com/Nekomancer834/KlipperWrt/raw/main/scripts/1_format_extroot.sh

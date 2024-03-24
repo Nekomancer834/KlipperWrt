@@ -1,9 +1,16 @@
 #!/bin/sh
 
 echo " "
-echo "   ################################################"
-echo "   ## Did you execute 1_format_extroot.sh first? ##"
-echo "   ################################################"
+echo "   ###########################################"
+echo "   ## Did you execute 0_change_luci_port.sh ##"
+echo "   ###########################################"
+echo " "
+read -p "Press [ENTER] if YES ...or [ctrl+c] to exit"
+
+echo " "
+echo "   #########################################"
+echo "   ## Did you execute 1_format_extroot.sh ##"
+echo "   #########################################"
 echo " "
 read -p "Press [ENTER] if YES ...or [ctrl+c] to exit"
 

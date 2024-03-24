@@ -1,4 +1,10 @@
 #!/bin/sh
+echo " "
+echo "   ################################################"
+echo "   ## Did you execute 0_change_luci_port.sh first? ##"
+echo "   ################################################"
+echo " "
+read -p "Press [ENTER] if YES ...or [ctrl+c] to exit"
 
 echo " "
 echo "This script will format your storage device and make it extroot"
